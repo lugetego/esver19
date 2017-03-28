@@ -1,0 +1,285 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/form_errors.html.twig' %}
+
+
+{% block body %}
+
+    {{ form_errors(form) }}
+
+
+    <div class="container">
+
+        {% block info %}
+            <strong><span class="glyphicon glyphicon-warning-sign"></span> Importante</strong> <br><br>
+            -Los campos marcados con * son obligatorios.<br>
+            -Debes asegurarte que el archivo a enviar a través de este formulario sea de un tamaño menor a 2MB y en formato PDF.<br>
+            -Se enviará un correo al profesor que te recomienda para solicitarle que nos
+            proporcione tu carta de recomendación, por lo que  debes asegurarte de
+            escribir correctamente su dirección de correo.<br>
+            -Al finalizar el envío de este formulario debes de visualizar una pantalla de confirmación. Además, recibirás un correo electrónico a la cuenta que proporcionaste,
+            de no ser así favor de comunicarte al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarte que hayamos recibido tu solicitud.
+        {% endblock %}
+
+        {{ form_start(form) }}
+
+        <h1><small><i class="fa fa-user"></i> Datos personales</small></h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>
+                                    {{ form_label(form.nombre) }}
+                                </div>
+                                <div>
+                                    {{ form_widget(form.nombre,{'attr': {'class': 'form-control input-sm', 'placeholder':'Nombre'} } ) }}
+                                </div>
+                                <div>{{ form_errors(form.nombre) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>
+                                    {{ form_label(form.paterno) }}
+                                </div>
+                                <div>
+                                    {{ form_widget(form.paterno, {'attr': {'class': 'form-control input-sm', 'placeholder':'Apellido paterno'} } ) }}
+                                </div>
+                                <div>{{ form_errors(form.paterno) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>
+                                    {{ form_label(form.materno) }}
+                                </div>
+                                <div>
+                                    {{ form_widget(form.materno, {'attr': {'class': 'form-control input-sm','placeholder':'Apellido materno'} } ) }}
+                                </div>
+                                <div>{{ form_errors(form.materno) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div >
+                                    {{ form_label(form.sexo) }}
+                                </div>
+                                <div>
+                                    {% spaceless %}
+                                        {% for child in form.sexo %}
+                                            <div class="radio-inline">
+                                                {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endspaceless %}
+                                </div>
+                                <div>{{ form_errors(form.sexo) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>{{ form_label(form.nacimiento) }}</div>
+                                <div class="col-lg-4" >{{ form_widget(form.nacimiento.day, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div class="col-lg-4" >{{ form_widget(form.nacimiento.month, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div class="col-lg-4" >{{ form_widget(form.nacimiento.year, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.nacimiento) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" >
+                            <div class="form-group">
+                                <div>{{ form_label(form.mail) }}</div>
+                                <div>{{ form_widget(form.mail, {'attr': {'class': 'form-control input-sm', 'placeholder':'Correo electrónico'} } ) }}</div>
+                                <div>{{ form_errors(form.mail) }}</div><br>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4" >
+                            <div class="form-group">
+                                <div>{{ form_label(form.tel) }}</div>
+                                <div>{{ form_widget(form.tel, {'attr': {'class': 'form-control input-sm', 'placeholder':'01 55 1234 5678'} } ) }}</div>
+                                <div>{{ form_errors(form.tel) }}</div><br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h1><small><i class="fa fa-book"></i> Datos académicos</small></h1>
+
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-lg-4" >
+                                <div>{{ form_label(form.procedencia) }}</div>
+                                <div>{{ form_widget(form.procedencia, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.procedencia) }}</div>
+                            </div>
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.carrera) }}</div>
+                                <div>{{ form_widget(form.carrera, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.carrera) }}</div><br>
+                            </div>
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.semestre) }}</div>
+                                <div>{{ form_widget(form.semestre, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.semestre) }}</div><br>
+                            </div>
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.porcentaje) }}</div>
+                                <div>{{ form_widget(form.porcentaje, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.porcentaje) }}</div><br>
+                            </div>
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.promedio) }}</div>
+                                <div>{{ form_widget(form.promedio, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.promedio) }}</div><br>
+                            </div>
+
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.profesor) }}</div>
+                                <div>{{ form_widget(form.profesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.profesor) }}</div><br>
+                            </div>
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.univprofesor) }}</div>
+                                <div>{{ form_widget(form.univprofesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.univprofesor) }}</div><br>
+                            </div>
+
+                            <div class="col-md-8" >
+                                <div>{{ form_label(form.mailprofesor) }}</div>
+                            </div>
+                            <div class="col-md-4" >
+                                <div>{{ form_widget(form.mailprofesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.mailprofesor) }}</div><br>
+                            </div>
+                            <div class="col-md-12" >
+                                <div class="alert alert-dismissable alert-warning">
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                    Los archivos que selecciones deben de estar en formato <i class="fa fa-file-pdf-o"></i>
+                                    PDF y tener un tamaño menor a 2MB.
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4" >
+                                <div>{{ form_widget(form.historialFile) }}</div>
+                                <div>{{ form_errors(form.historialFile) }}</div><br>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1><small><i class="fa fa-clock-o"></i> Participaciones anteriores</small></h1>
+
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-lg-6" >
+                                <div>{{ form_label(form.participado) }}</div>
+                                <div>
+                                    {% spaceless %}
+                                        {% for child in form.participado %}
+                                            <div class="radio-inline">
+                                                {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endspaceless %}
+                                </div>
+                                <div>{{ form_errors(form.participado) }}</div>
+                            </div>
+                            <div class="col-lg-6" >
+                                <div>{{ form_label(form.evento) }}</div>
+                                <div>{{ form_widget(form.evento, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.evento) }}</div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1><small><i class="fa fa-calculator"></i> Escuela de Verano 2017</small></h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-md-4" >
+                                <div>{{ form_label(form.beca) }}</div>
+                                <div>{{ form_widget(form.beca, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.beca) }}</div>
+                            </div>
+                            <div class="col-md-8" >
+                                <div>{{ form_label(form.razones) }}</div>
+                                <div>{{ form_widget(form.razones, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.razones) }}</div><br>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-7 col-lg-offset-5">
+                <input type="submit" value="Enviar"  class="btn btn-primary"/>
+
+                {{ form_end(form) }}
+
+
+            </div>
+        </div>
+    </div>
+
+
+    {#
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+        <ul>
+            <li>
+                <a href="{{ path('form_index') }}">Back to the list</a>
+            </li>
+        </ul> #}
+
+{% endblock %}
+
+
+    {% block footer %}
+        <div class="container">
+            <br><br>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <ul class="list-unstyled">
+                            <li class="pull-right">
+                                <a href="#top"><i class="fa fa-arrow-circle-up"></i> Subir</a>
+                            </li>
+                        </ul>
+                        {# <p><a href="http://matmor.unam.mx" rel="nofollow"><img src="{{ asset('bundles/ccmesver14esver/images/ccm-color.png') }}" alt="Logo CCM" width="121px" height="35px"/></a></p>
+                           <p><a href="http://unam.mx" rel="nofollow">UNAM</a></p>
+                         #}
+                    </div>
+                </div>
+            </footer>
+        </div>
+    {% endblock %}
