@@ -115,10 +115,10 @@ class FormController extends Controller
     /**
      * Displays a form to send recommendation file.
      *
-     * @Route("/{id}/{mail}/recom", name="form_recom")
+     * @Route("/{slug}/{mail}/recom", name="form_recom")
      * @Method({"GET", "POST"})
      */
-    public function recomAction(Request $request, Form $registro, $mail, $id)
+    public function recomAction(Request $request, Form $registro, $mail, $slug)
     {
         //$deleteForm = $this->createDeleteForm($registro);
         $editForm = $this->createForm('RegistroBundle\Form\FormType', $registro);
@@ -181,7 +181,7 @@ class FormController extends Controller
             }
   //      }
 
-        if( $registro->getMail() == $registro->getMailprofesor() ||  $mail != $registro->getMail() || $id != $registro->getId()){
+        if( $registro->getMail() == $registro->getMailprofesor() ||  $mail != $registro->getMail() || $slug != $registro->getSlug()){
 
             throw $this->createNotFoundException('Existe algún problema con la información de registro');
         }
