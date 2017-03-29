@@ -95,7 +95,7 @@ class MailConfirmacionCommand extends ContainerAwareCommand
 
             }
 
-            $output->writeln('<info>http://132.248.196.77/esver17/form/'.$reg->getId().'/'.$reg->getMail().'/confirma'.'</info>');
+            $output->writeln('<info>http://gaspacho/esver17/form/'.$reg->getSlug().'/'.$reg->getMail().'/confirma'.'</info>');
 
 
 
