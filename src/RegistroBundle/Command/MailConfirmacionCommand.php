@@ -41,6 +41,11 @@ class MailConfirmacionCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
+        $output->writeln(array(
+            '<info>Escuela de Verano 2017</>',
+
+        ));
+
         $logger = $this->getContainer()->get('logger');
 
         $em = $this->getContainer()->get('doctrine')->getManager();
@@ -61,21 +66,7 @@ class MailConfirmacionCommand extends ContainerAwareCommand
 
             if($input->getOption('send')) {
 
-
-                $mailer = $this->get('mailer');
-
-
-                //Estas lineas son para cuando el servidor tiene un certificado no valido
-                $https['ssl']['verify_peer'] = FALSE;
-                $https['ssl']['verify_peer_name'] = FALSE;
-                $transport = \Swift_SmtpTransport::newInstance(
-                    $this->getContainer()->getParameter('mailer_host'),
-                    $this->getContainer()->getParameter('mailer_port'),
-                    $this->getContainer()->getParameter('mailer_encryption'))
-                    ->setUsername($this->getContainer()->getParameter('mailer_user'))
-                    ->setPassword($this->getContainer()->getParameter('mailer_password'))
-                    ->setStreamOptions($https);
-
+             $mailer = $this->getContainer()->get('mailer');
 
                 // Envía correo al participante
                 $message = \Swift_Message::newInstance()
@@ -86,18 +77,11 @@ class MailConfirmacionCommand extends ContainerAwareCommand
                     ->setBody($this->getContainer()->get('templating')->render('form/mailAsistencia.txt.twig', array('entity' => $reg)));
                 ;
 
-
-//                $this->getContainer()->get('mailer')->newInstance($transport)->send($message);
-                $mailer->send($message);
-
-
-
+             $mailer->send($message);
 
             }
 
-            $output->writeln('<info>http://gaspacho/esver17/form/'.$reg->getSlug().'/'.$reg->getMail().'/confirma'.'</info>');
-
-
+            $output->writeln('<info>http://gaspacho.matmor.unam.mx/esver17/form/'.$reg->getSlug().'/'.$reg->getMail().'/confirma'.'</info>');
 
         }
 

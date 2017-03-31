@@ -183,7 +183,7 @@ class FormController extends Controller
 
         if( $registro->getMail() == $registro->getMailprofesor() ||  $mail != $registro->getMail() || $slug != $registro->getSlug()){
 
-            throw $this->createNotFoundException('Existe algún problema con la información de registro');
+            throw $this->createNotFoundException('Existe algún problema con la información de registro favor de contactar a webmaester@matmor.unam.mx');
         }
 
         if( $registro->getCartaName() != null || $registro->getRecomendacion() != null)
@@ -203,10 +203,10 @@ class FormController extends Controller
     /**
      * Displays a form to send recommendation file.
      *
-     * @Route("/{id}/{mail}/confirma", name="form_confirma")
+     * @Route("/{slug}/{mail}/confirma", name="form_confirma")
      * @Method({"GET", "POST"})
      */
-    public function confirmaAction(Request $request, Form $registro, $mail, $id)
+    public function confirmaAction(Request $request, Form $registro, $mail, $slug)
     {
         //$deleteForm = $this->createDeleteForm($registro);
         $editForm = $this->createForm('RegistroBundle\Form\FormType', $registro);
@@ -268,9 +268,9 @@ class FormController extends Controller
         }
         //      }
 
-        if( $mail != $registro->getMail() || $id != $registro->getId()){
+        if( $mail != $registro->getMail() || $slug != $registro->getSlug() || $registro->isAceptado() == false){
 
-            throw $this->createNotFoundException('Existe algún problema con la información de registro');
+            throw $this->createNotFoundException('Existe algún problema con la información de registro favor de contactar a webmaester@matmor.unam.mx');
         }
 
         if( $registro->isConfirmado() || $registro->isExamen() )
