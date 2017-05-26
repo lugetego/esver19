@@ -8,8 +8,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Psr\Log\LoggerInterface;
-
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -46,7 +44,6 @@ class MailConfirmacionCommand extends ContainerAwareCommand
 
         ));
 
-        $logger = $this->getContainer()->get('logger');
 
         $em = $this->getContainer()->get('doctrine')->getManager();
         $query = $em->createQuery(

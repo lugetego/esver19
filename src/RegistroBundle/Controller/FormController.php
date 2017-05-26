@@ -41,6 +41,13 @@ class FormController extends Controller
      */
     public function newAction(Request $request)
     {
+
+        $now = new \DateTime();
+        $deadline = new \DateTime('2017-05-27');
+        if($now >= $deadline){
+            return $this->render('form/newClosed.html.twig');
+        }
+
         $registro = new Form();
         $form = $this->createForm('RegistroBundle\Form\FormType', $registro);
         $form->remove('cartaFile');
@@ -268,7 +275,10 @@ class FormController extends Controller
         }
         //      }
 
-        if( $mail != $registro->getMail() || $slug != $registro->getSlug() || $registro->isAceptado() == false){
+        if( $mail != $registro->getMail() ||
+            $slug != $registro->getSlug() ||
+            $registro->isAceptado() == false
+            ) {
 
             throw $this->createNotFoundException('Existe algún problema con la información de registro favor de contactar a webmaester@matmor.unam.mx');
         }
