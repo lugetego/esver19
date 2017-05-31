@@ -69,7 +69,7 @@ class MailConfirmacionCommand extends ContainerAwareCommand
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Confirmación de Asistencia XVII Escuela de Verano')
                     ->setFrom('webmaster@matmor.unam.mx')
-                   // ->setTo(array($reg->getMail()))
+                    ->setTo(array($reg->getMail()))
                     ->setBcc(array('gerardo@matmor.unam.mx'))
                     ->setBody($this->getContainer()->get('templating')->render('form/mailAsistencia.txt.twig', array('entity' => $reg)));
                 ;
