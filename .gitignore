@@ -13,7 +13,7 @@
 /var/sessions/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
-!var/sessions/.gitkeep
+!var/sessions/.gitkeepgit
 
 # Parameters
 app/config/parameters.yml

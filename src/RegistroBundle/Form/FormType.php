@@ -139,12 +139,12 @@ class FormType extends AbstractType
 
             ))
             ->add('historialFile', 'vich_file', array(
-                'required'      => true,
+                'required'=> true,
                 'label' => 'Historial académico'
             ))
 
             ->add('cartaFile', 'vich_file', array(
-                'required'      => false,
+                'required' => false,
                 'label' => 'Carta de recomendación'
             ))
 
@@ -196,7 +196,6 @@ class FormType extends AbstractType
                 'multiple' => false,
                 'required'  => true,
                 'choices_as_values' => false,
-
 
             ))
             ->add('confirmado', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(

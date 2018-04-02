@@ -43,7 +43,7 @@ class FormController extends Controller
     {
 
         $now = new \DateTime();
-        $deadline = new \DateTime('2017-05-27');
+        $deadline = new \DateTime('2019-05-27');
         if($now >= $deadline){
             return $this->render('form/newClosed.html.twig');
         }
