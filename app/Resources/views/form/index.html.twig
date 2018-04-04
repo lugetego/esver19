@@ -12,7 +12,88 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">{{ registros|length }}</span>
+                        Registros<br><br>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        {% set males = 0 %}
+                        {% set females = 0 %}
+                        {% for registro in registros %}
+                            {% if registro.sexo == true %}
+                                {% set males = males + 1 %}
+                            {% else %}
+                                {% set females = females +1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <span class="badge">{{ females }}</span>
+                        Mujeres
+                        <br>
+                        <span class="badge">{{ males }}</span>
+                        Hombres
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        {% set recomendados = 0 %}
+                        {% for registro in registros %}
+                            {% if registro.recomendacion is defined  or registro.cartaName is defined%}
+                                {% set recomendados = recomendados + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <span class="badge">{{ recomendados }}</span>
+                        Recomendados
+                        <br>
+                        <span class="badge">{{ registros|length - recomendados }}</span>
+                        Sin recomendación
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        {% set aceptados = 0 %}
+                        {% for registro in registros %}
+                            {% if registro.aceptado == true %}
+                                {% set aceptados = aceptados + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <span class="badge">{{ aceptados }}</span>
+                        Aceptados
+                        <br>
+                        <span class="badge">{{ registros|length - aceptados }}</span>
+                        No aceptados
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        {% set confirmados = 0 %}
+                        {% for registro in registros %}
+                            {% if registro.confirmado == true %}
+                                {% set confirmados = confirmados + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <span class="badge">{{ confirmados }}</span>
+                        Confirmados
+                        <br>
+                        <span class="badge">{{ registros|length - confirmados }}</span>
+                        No confirmados
+                    </li>
+                </ul>
+            </div>
+        </div>
 
 
         <div class="table-responsive">
@@ -33,7 +114,7 @@
                 <tbody>
                 {% for registro in registros %}
                     <tr>
-                        <td><a href="{{ path('form_show', { 'id': registro.id}) }}">{{ registro.id }}</a></td>
+                        <td><a href="{{ path('form_show', { 'id': registro.id}) }}">{{ registro.slug }}</a></td>
                         <td>{{ registro.paterno |title ~ ' ' ~ registro.materno |title ~ ' ' ~ registro.nombre |title }}</td>
                         <td>{{ registro.mail }}</td>
                         <td>{{ registro.procedencia }}</td>
@@ -49,15 +130,8 @@
                         </td>
 
                         <td class="text-center">{% if registro.confirmado %}<span class="label label-success"><i class="fa fa-check-square"></i> Si</span>{% else %}<span class="label label-danger"><i class="fa fa-times-circle"></i> No</span>{% endif %}</td>
-
-
-
-
-
                         <td class="text-center">
-                           <a href="{{ path('form_show', { 'id': registro.id }) }}"><i class="fa fa-search-plus"></i></a>
-
-
+                            <a href="{{ path('form_show', { 'id': registro.id }) }}"><i class="fa fa-search-plus"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

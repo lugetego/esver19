@@ -12,21 +12,12 @@
 
 {% block body %}
 
-
     <div class="container">
-
-
-
-
         {% set total= entity|length %}
         Se enviaron {{ total }} correos<br>
-
         {% for entities in entity %}
             {{ entities.mail }}<br>
-
         {% endfor %}
-
-
     </div>
 
 {% endblock %}

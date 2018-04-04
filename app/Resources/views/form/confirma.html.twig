@@ -2,7 +2,6 @@
 
 {% form_theme edit_form 'form/form_errors.html.twig' %}
 
-
 {% block body %}
 
     <div class="container">
@@ -13,20 +12,15 @@
                 -Al finalizar el envío de este formulario debe de visualizar una pantalla de confirmación además de recibir un correo electrónico
                 a su cuenta,
                 de no ser así favor de comunicarse al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarse que se haya recibido su información.
-
             </div>
-
-
         {% endblock %}
 
-
-       {{ form_start(edit_form) }}
-
+        {{ form_start(edit_form) }}
 
         <div class="col-lg-12">
             <div class="form-group">
                 <div >
-                    {{ form_label(edit_form.confirmado, '¿Confirmas tu participación a la XVII Escuela de Verano en Matemáticas 2017?') }}
+                    {{ form_label(edit_form.confirmado, '¿Confirmas tu participación a la XVIII Escuela de Verano en Matemáticas 2018?') }}
                 </div>
                 <div>
                     {% spaceless %}
@@ -40,22 +34,12 @@
                 <div>{{ form_errors(edit_form.confirmado) }}</div>
             </div>
         </div>
-
-
-
-
-
-        </div>
-
-
+    </div>
 
     <div class="row">
         <div class="col-lg-12 col-lg-offset-5">
             <input type="submit" value="Enviar"  class="btn btn-primary"/>
-
             {{ form_end(edit_form) }}
-
-
         </div>
     </div>
 

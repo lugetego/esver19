@@ -29,19 +29,12 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-
-
         $em = $this->getDoctrine()->getManager();
-
         $registros = $em->getRepository('RegistroBundle:Form')->findAll();
-
         return $this->render('form/index.html.twig', array(
             'registros' => $registros,
         ));
-
-
     }
-
 
     /**
      * Displays a form to edit an existing Referencia entity.
@@ -52,14 +45,10 @@ class AdminController extends Controller
      */
     public function evalAction(Request $request, $id)
     {
-
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('RegistroBundle:Form')->find($id);
 
-
-
         $formEval = $this->createFormBuilder($entity)
-
             ->add('aceptado', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
                 'choices'=>array(
                     true=>'Si',
@@ -76,11 +65,8 @@ class AdminController extends Controller
                 'required'=>false,
                 'placeholder'=>false,
             ))
-
             ->add('comentarios', 'Symfony\Component\Form\Extension\Core\Type\TextareaType',array('label'=>'Comentarios','required'=>false))
-
             ->getForm();
-
 
         $formEval->handleRequest($request);
 
@@ -88,8 +74,6 @@ class AdminController extends Controller
 
                 $em->persist($entity);
                 $em->flush();
-
-
 
             return $this->redirectToRoute('form_show', array('id' => $id));
 
@@ -124,7 +108,7 @@ class AdminController extends Controller
 
         foreach ($entities as $receipient) {
             $message = \Swift_Message::newInstance()
-                ->setSubject('Confirmación de Asistencia XVII Escuela de Verano')
+                ->setSubject('Confirmación de Asistencia XVIII Escuela de Verano')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($receipient->getMail()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))
@@ -152,6 +136,5 @@ class AdminController extends Controller
         //return $this->render('CcmEmmbioBundle:Regs:mails.html.twig', array('entities' => $entities));
 
     }
-
 
 }

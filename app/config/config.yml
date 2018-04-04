@@ -71,13 +71,13 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        esver17_carta:
-            uri_prefix:         /esver17/submissions
+        esver18_carta:
+            uri_prefix:         /esver18/submissions
             upload_destination: %kernel.root_dir%/../web/submissions
             namer:              vich_uploader.namer_uniqid
 
-        esver17_historial:
-            uri_prefix:         /esver17/submissions
+        esver18_historial:
+            uri_prefix:         /esver18/submissions
             upload_destination: %kernel.root_dir%/../web/submissions
             namer:              vich_uploader.namer_uniqid
 

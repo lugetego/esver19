@@ -174,7 +174,7 @@ class FormController extends Controller
                 $mailer = $this->get('mailer');
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Carta de recomendación. XVII Escuela de Verano en Matemáticas.')
+                    ->setSubject('Carta de recomendación. XVIII Escuela de Verano en Matemáticas.')
                     ->setFrom('webmaster@matmor.unam.mx')
                     ->setTo(array($registro->getMailprofesor()))
                     ->setCc(array($registro->getMail()))
@@ -190,7 +190,7 @@ class FormController extends Controller
 
         if( $registro->getMail() == $registro->getMailprofesor() ||  $mail != $registro->getMail() || $slug != $registro->getSlug()){
 
-            throw $this->createNotFoundException('Existe algún problema con la información de registro favor de contactar a webmaester@matmor.unam.mx');
+            throw $this->createNotFoundException('Existe algún problema con la información de registro favor de contactar a webmaster@matmor.unam.mx');
         }
 
         if( $registro->getCartaName() != null || $registro->getRecomendacion() != null)
@@ -262,7 +262,7 @@ class FormController extends Controller
             $mailer = $this->get('mailer');
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Confirmación de asistencia. XVII Escuela de Verano en Matemáticas.')
+                ->setSubject('Confirmación de asistencia. XVIII Escuela de Verano en Matemáticas.')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($registro->getMail()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))

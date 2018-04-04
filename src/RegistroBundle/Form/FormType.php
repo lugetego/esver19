@@ -34,8 +34,8 @@ class FormType extends AbstractType
             ))
             ->add('sexo', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
                 'choices'   => array(
-                    true => 'Masculino',
-                    false => 'Femenino'),
+                    false => 'Femenino',
+                    true => 'Masculino'),
                 'expanded' => true,
                 'multiple' => false,
                 'required'  => true,
@@ -53,7 +53,7 @@ class FormType extends AbstractType
                     'year' => 'Año',
                     'month' => 'Mes',
                     'day' => 'Día'),
-                'years'=> range(1980,2000),
+                'years'=> range(1980,2001),
                 'label'=>'*Fecha de nacimiento',
                 'required'=>true,
 
@@ -81,7 +81,7 @@ class FormType extends AbstractType
 
             ))
             ->add('porcentaje', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType',array(
-                'label'=>'*Porcentaje de avance (hasta marzo 2017)',
+                'label'=>'*Porcentaje de avance (hasta marzo 2018)',
                 'choices'=>array(
                     '50'=>'50',
                     '60'=>'60',
@@ -208,7 +208,7 @@ class FormType extends AbstractType
             ))
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

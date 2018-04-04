@@ -15,7 +15,7 @@
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{ path('admin') }}">Solicitudes de registro</a></li>
-            <li class="active">Solicitud número {{ form.id|title }}</li>
+            <li class="active">{{ form.slug }}</li>
         </ul>
 
         {% for flash_message in app.session.flashbag.get('notice') %}
@@ -41,9 +41,9 @@
                         <dl>
                             <dt>Sexo</dt>
                             <dd>{% if form.sexo == false %}
-                                    H
-                                {% else %}
                                     M
+                                {% else %}
+                                    H
                                 {% endif %}
                             </dd>
                         </dl>
@@ -155,7 +155,7 @@
                         </dl>
                     </div>
                     <div class="page-headerm col-lg-12">
-                        <h1><small><i class="fa fa-calculator"></i> Escuela de Verano 2017</small></h1>
+                        <h1><small><i class="fa fa-calculator"></i> Escuela de Verano 2018</small></h1>
                     </div>
                     <div class="col-lg-2">
                         <dl>
@@ -196,15 +196,12 @@
                         </dl>
                     </div>
 
-
                     <div class="col-lg-12">
                         <dl>
                             <dt>Comentarios</dt>
                             <dd>{{ form.comentarios }}</dd>
                         </dl>
                     </div>
-
-
 
                     <div class="col-lg-2">
                         <dl>

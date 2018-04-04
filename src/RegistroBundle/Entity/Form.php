@@ -169,7 +169,7 @@ class Form
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="esver17_historial", fileNameProperty="historialName")
+     * @Vich\UploadableField(mapping="esver18_historial", fileNameProperty="historialName")
      *
      * @Assert\File(
      *     maxSize = "2M",
@@ -192,7 +192,7 @@ class Form
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="esver17_carta", fileNameProperty="cartaName")
+     * @Vich\UploadableField(mapping="esver18_carta", fileNameProperty="cartaName")
      *
      * @Assert\File(
      *     maxSize = "2M",
@@ -210,9 +210,6 @@ class Form
      */
     private $cartaName;
 
-
-
-
     /**
      * @var bool
      *
@@ -226,8 +223,6 @@ class Form
      * @ORM\Column(name="confirmado", type="boolean", nullable=true)
      */
     private $confirmado;
-
-
 
     /**
      * @var bool
@@ -271,9 +266,9 @@ class Form
     /**
      * @var string
      *
-     * @ORM\Column(name="comentarios", type="string", length=5000, nullable=true)
+     * @ORM\Column(name="comentarios", type="text", nullable=true)
      * @Assert\Length(
-     *      max = 3000,
+     *      max = 4000,
      *      maxMessage = "No se permiten más de {{ limit }} caracteres"
      * )
      */
@@ -282,9 +277,9 @@ class Form
     /**
      * @var string
      *
-     * @ORM\Column(name="recomendacion", type="string", length=5000, nullable=true)
+     * @ORM\Column(name="recomendacion", type="text", nullable=true)
      * @Assert\Length(
-     *      max = 3000,
+     *      max = 4000,
      *      maxMessage = "No se permiten más de {{ limit }} caracteres"
      * )
      */
