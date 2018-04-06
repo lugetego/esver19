@@ -71,7 +71,7 @@ class FormController extends Controller
             $mailer = $this->get('mailer');
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Registro Escuela de Verano en Matemáticas 2017')
+                ->setSubject('Registro Escuela de Verano en Matemáticas 2018')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($registro->getMail()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))
@@ -80,7 +80,7 @@ class FormController extends Controller
             $mailer->send($message);
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Carta de recomendación. Escuela de Verano en Matemáticas 2017')
+                ->setSubject('Carta de recomendación. Escuela de Verano en Matemáticas 2018')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($registro->getMailprofesor()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))
