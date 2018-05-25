@@ -47,7 +47,7 @@
                     <li class="list-group-item">
                         {% set recomendados = 0 %}
                         {% for registro in registros %}
-                            {% if registro.recomendacion is defined  or registro.cartaName is defined%}
+                            {% if registro.recomendacion != null or registro.cartaName != null %}
                                 {% set recomendados = recomendados + 1 %}
                             {% endif %}
                         {% endfor %}
