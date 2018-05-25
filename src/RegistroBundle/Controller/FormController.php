@@ -43,7 +43,7 @@ class FormController extends Controller
     {
 
         $now = new \DateTime();
-        $deadline = new \DateTime('2019-05-27');
+        $deadline = new \DateTime('2018-05-27');
         if($now >= $deadline){
             return $this->render('form/newClosed.html.twig');
         }
@@ -52,7 +52,6 @@ class FormController extends Controller
         $form = $this->createForm('RegistroBundle\Form\FormType', $registro);
         $form->remove('cartaFile');
         $form->remove('comentarios');
-        $form->remove('recomendacion');
         $form->remove('recomendacion');
         $form->remove('examen');
         $form->remove('confirmado');
