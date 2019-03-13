@@ -109,6 +109,14 @@ class Form
     /**
      * @var string
      *
+     * @ORM\Column(name="areas", type="array")
+     * @Assert\NotBlank()
+     */
+    private $areas;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="carrera", type="string", length=100)
      * @Assert\NotBlank()
      */
@@ -169,7 +177,7 @@ class Form
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="esver18_historial", fileNameProperty="historialName")
+     * @Vich\UploadableField(mapping="esver19_historial", fileNameProperty="historialName")
      *
      * @Assert\File(
      *     maxSize = "2M",
@@ -187,12 +195,10 @@ class Form
      */
     private $historialName;
 
-
-
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="esver18_carta", fileNameProperty="cartaName")
+     * @Vich\UploadableField(mapping="esver19_carta", fileNameProperty="cartaName")
      *
      * @Assert\File(
      *     maxSize = "2M",
@@ -225,6 +231,21 @@ class Form
     private $confirmado;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="cursos", type="string", length=100)
+     * @Assert\NotBlank()
+     */
+    private $cursos;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vegetariano", type="boolean", nullable=true)
+     */
+    private $vegetariano;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="aceptado", type="boolean", nullable=true)
@@ -253,7 +274,7 @@ class Form
     /**
      * @var string
      *
-     * @ORM\Column(name="razones", type="string", length=1000)
+     * @ORM\Column(name="razones", type="text")
      * @Assert\NotBlank()
      * @Assert\Length(
      *      max = 1000,
@@ -312,8 +333,6 @@ class Form
      * @var \DateTime
      */
     private $createdAt;
-
-
 
     /**
      * Get id
@@ -510,6 +529,22 @@ class Form
     }
 
     /**
+     * @return string
+     */
+    public function getAreas()
+    {
+        return $this->areas;
+    }
+
+    /**
+     * @param string $areas
+     */
+    public function setAreas($areas)
+    {
+        $this->areas = $areas;
+    }
+
+    /**
      * Set carrera
      *
      * @param string $carrera
@@ -670,10 +705,6 @@ class Form
         return $this->mailprofesor;
     }
 
-
-
-
-
     /**
      * Set participado
      *
@@ -695,6 +726,38 @@ class Form
     public function getParticipado()
     {
         return $this->participado;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVegetariano()
+    {
+        return $this->vegetariano;
+    }
+
+    /**
+     * @param bool $vegetariano
+     */
+    public function setVegetariano($vegetariano)
+    {
+        $this->vegetariano = $vegetariano;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCursos()
+    {
+        return $this->cursos;
+    }
+
+    /**
+     * @param string $cursos
+     */
+    public function setCursos($cursos)
+    {
+        $this->cursos = $cursos;
     }
 
     /**

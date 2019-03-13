@@ -40,7 +40,7 @@ class MailConfirmacionCommand extends ContainerAwareCommand
     {
 
         $output->writeln(array(
-            '<info>Escuela de Verano 2018</>',
+            '<info>Escuela de Verano 2019</>',
 
         ));
 
@@ -78,7 +78,7 @@ class MailConfirmacionCommand extends ContainerAwareCommand
 
             }
 
-            $output->writeln('<info>http://gaspacho.matmor.unam.mx/esver18/form/'.$reg->getSlug().'/'.$reg->getMail().'/confirma'.'</info>');
+            $output->writeln('<info>http://gaspacho.matmor.unam.mx/esver19/form/'.$reg->getSlug().'/'.$reg->getMail().'/confirma'.'</info>');
 
         }
 

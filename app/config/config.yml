@@ -35,6 +35,11 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        evento: '%evento%'
+        eventoc: '%eventoc%'
+        url: '%url%'
+        comite: '%comite%'
 
 # Doctrine Configuration
 doctrine:
@@ -66,18 +71,22 @@ swiftmailer:
     password:  "%mailer_password%"
     encryption: "%mailer_encryption%"
     port: "%mailer_port%"
+    stream_options:
+        ssl:
+            verify_peer: false
+            verify_peer_name: false
 
 vich_uploader:
     db_driver: orm
 
     mappings:
-        esver18_carta:
-            uri_prefix:         /esver18/submissions
+        esver19_carta:
+            uri_prefix:         /esver19/submissions
             upload_destination: %kernel.root_dir%/../web/submissions
             namer:              vich_uploader.namer_uniqid
 
-        esver18_historial:
-            uri_prefix:         /esver18/submissions
+        esver19_historial:
+            uri_prefix:         /esver19/submissions
             upload_destination: %kernel.root_dir%/../web/submissions
             namer:              vich_uploader.namer_uniqid
 

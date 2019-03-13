@@ -66,7 +66,7 @@ class FormType extends AbstractType
             ))
 
             ->add('procedencia', 'Symfony\Component\Form\Extension\Core\Type\TextType',array(
-                'label'=>'*Universidad de Procedencia',
+                'label'=>'*Universidad de procedencia',
                 'required'=>true,
 
             ))
@@ -81,7 +81,7 @@ class FormType extends AbstractType
 
             ))
             ->add('porcentaje', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType',array(
-                'label'=>'*Porcentaje de avance (hasta marzo 2018)',
+                'label'=>'*Porcentaje de avance (hasta marzo 2019)',
                 'choices'=>array(
                     '50'=>'50',
                     '60'=>'60',
@@ -148,6 +148,34 @@ class FormType extends AbstractType
                 'label' => 'Carta de recomendación'
             ))
 
+            ->add('areas', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType',array(
+                'label'=>'*Selecciona tus áreas de interés (áreas de investigación dentro del Posgrado Conjunto en Ciencias Matemáticas, PCCM UNAM-UMSNH)',
+                'choices'=>array(
+                    'Análisis funcional' => 'Análisis funcional',
+                    'Biomatemáticas' => 'Biomatemáticas',
+                    'Cohomología de grupos' => 'Cohomología de grupos',
+                    'Combinatoria' => 'Combinatoria',
+                    'Ecuaciones diferenciales' => 'Ecuaciones diferenciales',
+                    'Física Matemática' => 'Física Matemática',
+                    'Geometría diferecnias' => 'Geometría diferecnias',
+                    'Geometría algebraica'=>'Geometría algebraica',
+                    'Geometría combinatoria' => 'Geometría combinatoria',
+                    'Matemáticas aplicadas' => 'Matemáticas aplicadas',
+                    'Sistemas dinámicos' => 'Sistemas dinámicos',
+                    'Teoría de control' => 'Teoría de control',
+                    'Teoría de conjuntos' => 'Teoría de conjuntos',
+                    'Teoría de grupos' => 'Teoría de grupos',
+                    'Teoría de números' => 'Teoría de números',
+                    'Teoría de representaciones' => 'Teoría de representaciones',
+                    'Topología algebraica'=>'Topología algebraica',
+                    'Topología de conjuntos'=>'Topología de conjuntos',
+                    ),
+                'placeholder'=>'Seleccionar',
+                'required'=>true,
+                'choices_as_values' => true,
+                'multiple'=>true,
+            ))
+
             ->add('participado', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
                 'choices'=>array(
                     true=>'Si ',
@@ -157,6 +185,27 @@ class FormType extends AbstractType
                 'label'=>'*¿Ha participado en alguna Escuela de Verano o algún evento similar anteriormente? (no necesariamente en Morelia)',
                 'choices_as_values' => false,
 
+            ))
+            ->add('vegetariano', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
+                'choices'=>array(
+                    true=>'Si ',
+                    false=>'No '),
+                'expanded'=>true,
+                'required'=>true,
+                'label'=>'*¿Deseas comida vegetariana?',
+                'choices_as_values' => false,
+            ))
+            ->add('cursos', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType',array(
+                'label'=>'*Se tienen que tomar 4 cursos, las opciones a elegir son las siguientes:',
+                'choices'=>array(
+                    'Álgebra Lineal, Curso 2, Curso 3 y Curso 4' => 'Álgebra Lineal, Curso 2, Curso 3 y Curso 4',
+                    'Álgebra Lineal, Cálculo Diferencial e Integral, Curso 3 y Curso 4' => 'Álgebra Lineal, Cálculo Diferencial e Integral, Curso 3 y Curso 4',
+                    'Curso 1, Curso 2, Curso 3 y Curso 4' => 'Curso 1, Curso 2, Curso 3 y Curso 4',
+                    'Cálculo Diferencial e Integral, Curso 1, Curso 3 y Curso 4'=> 'Cálculo Diferencial e Integral, Curso 1, Curso 3 y Curso 4',
+                ),
+                'placeholder'=>'Seleccionar',
+                'required'=>true,
+                'choices_as_values' => true,
             ))
             ->add('evento', 'Symfony\Component\Form\Extension\Core\Type\TextareaType',array(
                 'label'=>'En caso afirmativo, escriba el año, el nombre del evento y el lugar:',

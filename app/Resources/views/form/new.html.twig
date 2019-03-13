@@ -12,13 +12,15 @@
 
         {% block info %}
             <strong><span class="glyphicon glyphicon-warning-sign"></span> Importante</strong> <br><br>
-            -Los campos marcados con * son obligatorios.<br>
-            -Debes asegurarte que el archivo a enviar a través de este formulario sea de un tamaño menor a 2MB y en formato PDF.<br>
-            -Se enviará un correo al profesor que te recomienda para solicitarle que nos
-            proporcione tu carta de recomendación, por lo que  debes asegurarte de
-            escribir correctamente su dirección de correo.<br>
-            -Al finalizar el envío de este formulario debes de visualizar una pantalla de confirmación. Además, recibirás un correo electrónico a la cuenta que proporcionaste,
-            de no ser así favor de comunicarte al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarte que hayamos recibido tu solicitud.
+            <p> -Los campos marcados con * son obligatorios.</p>
+            <p>-Debes asegurarte que el archivo a enviar a través de este formulario sea de un tamaño menor a 2MB y en formato PDF.</p>
+            <p class="text-justify">-Se enviará un correo al profesor que te recomienda para solicitarle que nos
+                proporcione tu carta de recomendación, por lo que  debes asegurarte de
+                escribir correctamente su dirección de correo.</p>
+            <p class="text-justify">-Al finalizar el envío de este formulario debes de visualizar una pantalla de confirmación. Además, recibirás un correo electrónico a la cuenta que proporcionaste,
+                de no ser así favor de revisar tu carpeta de correos no desados o comunicarte al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarte que hayamos recibido tu solicitud.
+            </p>
+            -Fecha límite para realizar tu registro: <mark>24 de mayo de 2019</mark>.
         {% endblock %}
 
         {{ form_start(form) }}
@@ -119,17 +121,17 @@
                         <div class="form-group">
                             <div class="col-lg-4" >
                                 <div>{{ form_label(form.procedencia) }}</div>
-                                <div>{{ form_widget(form.procedencia, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.procedencia, {'attr': {'class': 'form-control input-sm' , 'placeholder':'Universidad de procedencia'} } ) }}</div>
                                 <div>{{ form_errors(form.procedencia) }}</div>
                             </div>
                             <div class="col-md-4" >
                                 <div>{{ form_label(form.carrera) }}</div>
-                                <div>{{ form_widget(form.carrera, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.carrera, {'attr': {'class': 'form-control input-sm', 'placeholder':'Carrera'} } ) }}</div>
                                 <div>{{ form_errors(form.carrera) }}</div><br>
                             </div>
                             <div class="col-md-4" >
                                 <div>{{ form_label(form.semestre) }}</div>
-                                <div>{{ form_widget(form.semestre, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.semestre, {'attr': {'class': 'form-control input-sm', 'placeholder':'Semestre o cuatrimestre'} } ) }}</div>
                                 <div>{{ form_errors(form.semestre) }}</div><br>
                             </div>
                             <div class="col-md-4" >
@@ -145,12 +147,12 @@
 
                             <div class="col-md-4" >
                                 <div>{{ form_label(form.profesor) }}</div>
-                                <div>{{ form_widget(form.profesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.profesor, {'attr': {'class': 'form-control input-sm', 'placeholder':'Nombre del profesor que lo recomienda'} } ) }}</div>
                                 <div>{{ form_errors(form.profesor) }}</div><br>
                             </div>
                             <div class="col-md-4" >
                                 <div>{{ form_label(form.univprofesor) }}</div>
-                                <div>{{ form_widget(form.univprofesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.univprofesor, {'attr': {'class': 'form-control input-sm', 'placeholder':'Universidad del profesor'} } ) }}</div>
                                 <div>{{ form_errors(form.univprofesor) }}</div><br>
                             </div>
 
@@ -158,7 +160,7 @@
                                 <div>{{ form_label(form.mailprofesor) }}</div>
                             </div>
                             <div class="col-md-4" >
-                                <div>{{ form_widget(form.mailprofesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.mailprofesor, {'attr': {'class': 'form-control input-sm', 'placeholder':'Correo del profesor'} } ) }}</div>
                                 <div>{{ form_errors(form.mailprofesor) }}</div><br>
                             </div>
                             <div class="col-md-12" >
@@ -174,6 +176,15 @@
                                 <div>{{ form_widget(form.historialFile) }}</div>
                                 <div>{{ form_errors(form.historialFile) }}</div><br>
                             </div>
+
+
+
+                            <div class="col-md-12" >
+                                <div>{{ form_label(form.areas) }}</div>
+                                <div>{{ form_widget(form.areas, {'attr': {'class': 'form-control input-sm js-example-basic-multiple'} } ) }}</div>
+                                <div>{{ form_errors(form.areas) }}</div><br>
+                            </div>
+
 
 
                         </div>
@@ -205,7 +216,7 @@
                             </div>
                             <div class="col-lg-6" >
                                 <div>{{ form_label(form.evento) }}</div>
-                                <div>{{ form_widget(form.evento, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_widget(form.evento, {'attr': {'class': 'form-control input-sm', 'placeholder':'Año, evento y lugar donde ha participado'} } ) }}</div>
                                 <div>{{ form_errors(form.evento) }}</div><br>
                             </div>
                         </div>
@@ -214,27 +225,50 @@
             </div>
         </div>
 
-        <h1><small><i class="fa fa-calculator"></i> Escuela de Verano 2018</small></h1>
+        <h1><small><i class="fa fa-calculator"></i> {{ evento }}</small></h1>
 
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <div class="col-md-4" >
-                                <div>{{ form_label(form.beca) }}</div>
-                                <div>{{ form_widget(form.beca, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
-                                <div>{{ form_errors(form.beca) }}</div>
+                    <div class="form-group">
+                        <div class="col-md-6" >
+                            <div>{{ form_label(form.beca) }}</div>
+                            <div>{{ form_widget(form.beca, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                            <div>{{ form_errors(form.beca) }}</div>
+                        </div>
+                        <div class="col-md-6" >
+                            <div>{{ form_label(form.vegetariano) }}</div>
+                            <div>
+                                {% spaceless %}
+                                    {% for child in form.vegetariano %}
+                                        <div class="radio-inline">
+                                            {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                                        </div>
+                                    {% endfor %}
+                                {% endspaceless %}
                             </div>
-                            <div class="col-md-8" >
-                                <div>{{ form_label(form.razones) }}</div>
-                                <div>{{ form_widget(form.razones, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
-                                <div>{{ form_errors(form.razones) }}</div><br>
-                            </div>
+                            <div>{{ form_errors(form.vegetariano) }}</div>
+                        </div>
+                        <div class="col-md-8" ><br>
+                            <div>{{ form_label(form.cursos) }}</div>
+                            <a type="button"  class="btn btn-primary btn-xs" data-toggle="modal" data-target=".temarios"><i class="fa fa-external-link" aria-hidden="true"></i>
+                                Consultar cursos</a>
+                            <div>
 
+                                <br>{{ form_widget(form.cursos, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                            <div>{{ form_errors(form.cursos) }}</div>
+                        </div>
+
+
+
+                        <div class="col-md-8" ><br>
+                            <div>{{ form_label(form.razones) }}</div>
+                            <div>{{ form_widget(form.razones, {'attr': {'class': 'form-control input-sm', 'rows':'5', 'placeholder':'Razones por las que desea entrar a la escuela'} } ) }}</div>
+                            <div>{{ form_errors(form.razones) }}</div><br>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -249,6 +283,32 @@
         </div>
     </div>
 
+    <!-- Large modal -->
+
+    <div class="modal fade temarios" tabindex="-1" role="dialog" aria-labelledby="temarios">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cursos</h4>
+                </div>
+                <div class="modal-body">
+                    <p><strong>C1:</strong> Mosaicos y funciones complejas - Jesús Muciño</p>
+                    <p><strong>C2:</strong> Categoría de Baire: funciones y figuras - Edgardo Roldán</p>
+                    <p><strong>C3:</strong> Geometría Hiperbólica - Jesús Hernández</p>
+                    <p><strong>C4:</strong> Números de Catalan- Ernesto Vallejo</p>
+                    <p><strong>Curso propedéutico para ingreso al PCCM:</strong> Álgebra Lineal - Gerardo Raggi</p>
+                    <p><strong>Curso propedéutico para ingreso al PCCM:</strong> Cálculo diferencial e integral - Quentin Gendron</p>
+                    <br>
+                    <p><a href="{{ url }}" target="_blank">Más información sobre los cursos</a></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {#
             {{ form_widget(form) }}
@@ -261,6 +321,7 @@
         </ul> #}
 
 {% endblock %}
+
 
 
     {% block footer %}
@@ -283,3 +344,16 @@
             </footer>
         </div>
     {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2(
+                {  placeholder: 'Puedes seleccionar una o más áreas de investigación',
+                }
+            );
+
+        });
+    </script>
+{% endblock javascripts %}

@@ -43,7 +43,7 @@ class FormController extends Controller
     {
 
         $now = new \DateTime();
-        $deadline = new \DateTime('2018-05-27');
+        $deadline = new \DateTime('2019-05-25');
         if($now >= $deadline){
             return $this->render('form/newClosed.html.twig');
         }
@@ -65,12 +65,11 @@ class FormController extends Controller
             $em->persist($registro);
             $em->flush();
 
-
             // Obtiene correo y msg de la forma de contacto
             $mailer = $this->get('mailer');
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Registro Escuela de Verano en Matemáticas 2018')
+                ->setSubject('Registro - '.$this->getParameter('evento'))
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($registro->getMail()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))
@@ -79,7 +78,7 @@ class FormController extends Controller
             $mailer->send($message);
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Carta de recomendación. Escuela de Verano en Matemáticas 2018')
+                ->setSubject('Carta de recomendación - '. $this->getParameter('evento'))
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($registro->getMailprofesor()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))
@@ -149,6 +148,9 @@ class FormController extends Controller
         $editForm->remove('evento');
         $editForm->remove('beca');
         $editForm->remove('razones');
+        $editForm->remove('vegetariano');
+        $editForm->remove('cursos');
+        $editForm->remove('areas');
         $editForm->remove('comentarios');
         $editForm->remove('examen');
         $editForm->remove('confirmado');
@@ -173,12 +175,12 @@ class FormController extends Controller
                 $mailer = $this->get('mailer');
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Carta de recomendación. XVIII Escuela de Verano en Matemáticas.')
+                    ->setSubject('Carta de recomendación - ' .$this->getParameter('eventoc')
                     ->setFrom('webmaster@matmor.unam.mx')
                     ->setTo(array($registro->getMailprofesor()))
                     ->setCc(array($registro->getMail()))
                     ->setBcc(array('gerardo@matmor.unam.mx'))
-                    ->setBody($this->renderView('form/mailCarta.txt.twig', array('entity' => $registro)));
+                    ->setBody($this->renderView('form/mailCarta.txt.twig', array('entity' => $registro))));
                 $mailer->send($message);
 
                 //return $this->redirectToRoute('form_edit', array('id' => $registro->getId()));
@@ -241,6 +243,10 @@ class FormController extends Controller
         $editForm->remove('cartaFile');
         $editForm->remove('recomendacion');
         $editForm->remove('examen');
+        $editForm->remove('cursos');
+        $editForm->remove('vegetariano');
+        $editForm->remove('areas');
+
 
 
         $editForm->handleRequest($request);
@@ -251,9 +257,7 @@ class FormController extends Controller
 
 
             $em = $this->getDoctrine()->getManager();
-
             $registro->setUpdatedAt(new \DateTime());
-
             $em->persist($registro);
             $em->flush();
 
@@ -261,7 +265,7 @@ class FormController extends Controller
             $mailer = $this->get('mailer');
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Confirmación de asistencia. XVIII Escuela de Verano en Matemáticas.')
+                ->setSubject('Confirmación de asistencia - '. $this->getParameter('eventoc'))
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($registro->getMail()))
                 ->setBcc(array('gerardo@matmor.unam.mx'))

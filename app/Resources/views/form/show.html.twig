@@ -135,6 +135,17 @@
                             <dd>{{ form.recomendacion }}</dd>
                         </dl>
                     </div>
+                    <div class="col-lg-12">
+                        <dl>
+                            <dt>Áreas de interés PCCM</dt>
+                            <dd>
+                                {% for area in form.areas %}
+                                    {{ area }}
+                                    {% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            </dd>
+                        </dl>
+                    </div>
                     <div class="page-header col-lg-12" >
                         <h1><small><i class="fa fa-clock-o"></i> Participaciones anteriores</small></h1>
                     </div>
@@ -155,7 +166,7 @@
                         </dl>
                     </div>
                     <div class="page-headerm col-lg-12">
-                        <h1><small><i class="fa fa-calculator"></i> Escuela de Verano 2018</small></h1>
+                        <h1><small><i class="fa fa-calculator"></i> {{ evento }}</small></h1>
                     </div>
                     <div class="col-lg-2">
                         <dl>
@@ -163,7 +174,23 @@
                             <dd>{{ form.beca }}</dd>
                         </dl>
                     </div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-4">
+                        <dl>
+                            <dt>Vegetariano</dt>
+                            {% if form.vegetariano == true %}
+                                <dd><span class="label label-success">Si</span></dd>
+                            {% else %}
+                                <dd><span class="label label-danger">No</span></dd>
+                            {% endif %}
+                        </dl>
+                    </div>
+                    <div class="col-lg-6">
+                        <dl>
+                            <dt>Cursos</dt>
+                            <dd>{{ form.cursos }}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-lg-12">
                         <dl>
                             <dt>Razones</dt>
                             <dd>{{ form.razones }}</dd>

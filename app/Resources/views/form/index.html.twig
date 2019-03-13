@@ -18,7 +18,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <span class="badge">{{ registros|length }}</span>
-                        Registros<br><br>
+                         Registros <br><br>
                     </li>
                 </ul>
             </div>
@@ -39,6 +39,23 @@
                         <br>
                         <span class="badge">{{ males }}</span>
                         Hombres
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        {% set vegetarianos = 0 %}
+                        {% for registro in registros %}
+                            {% if registro.vegetariano == true %}
+                                {% set vegetarianos = vegetarianos + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <span class="badge">{{ vegetarianos }}</span>
+                        Vegetarianos
+                        <br>
+                        <span class="badge">{{ registros|length - vegetarianos }}</span>
+                        No vegetarianos
                     </li>
                 </ul>
             </div>
@@ -105,6 +122,8 @@
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Universidad</th>
+                    <th>Cursos</th>
+                    <th>Vegetariano</th>
                     <th>Aceptado</th>
                     <th>Confirmado</th>
 
@@ -118,6 +137,15 @@
                         <td>{{ registro.paterno |title ~ ' ' ~ registro.materno |title ~ ' ' ~ registro.nombre |title }}</td>
                         <td>{{ registro.mail }}</td>
                         <td>{{ registro.procedencia }}</td>
+                        <td>{{ registro.cursos }}</td>
+                        <td class="text-center">
+                            {% if registro.vegetariano == true %}
+                                Si
+                            {% else %}
+                                No
+                            {% endif %}</td>
+
+
 
 
                         <td class="text-center">{% if registro.aceptado == true %}
