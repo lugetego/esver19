@@ -157,7 +157,7 @@ class FormType extends AbstractType
                     'Combinatoria' => 'Combinatoria',
                     'Ecuaciones diferenciales' => 'Ecuaciones diferenciales',
                     'Física Matemática' => 'Física Matemática',
-                    'Geometría diferecnias' => 'Geometría diferecnias',
+                    'Geometría diferencial' => 'Geometría diferencial',
                     'Geometría algebraica'=>'Geometría algebraica',
                     'Geometría combinatoria' => 'Geometría combinatoria',
                     'Matemáticas aplicadas' => 'Matemáticas aplicadas',
