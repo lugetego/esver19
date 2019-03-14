@@ -180,7 +180,7 @@ class FormController extends Controller
                     ->setTo(array($registro->getMailprofesor()))
                     ->setCc(array($registro->getMail()))
                     ->setBcc(array('gerardo@matmor.unam.mx'))
-                    ->setBody($this->renderView('form/mailCarta.txt.twig', array('entity' => $registro))));
+                    ->setBody($this->renderView('form/mailCarta.txt.twig', array('entity' => $registro)));
                 $mailer->send($message);
 
                 //return $this->redirectToRoute('form_edit', array('id' => $registro->getId()));
