@@ -5,7 +5,7 @@ parameters:
     evento: 'Escuela de Verano en Matemáticas 2019'
     eventoc: 'XIX Escuela de Verano en Matemáticas 2019'
     url: 'http://www.matmor.unam.mx/eventos/esver19'
-    comite: 'Ahtziri González, Daniel Juan Pineda, Elisa Domínguez, Naila Angelina,  Roberto Romero'
+    comite: 'Ahtziri González, Daniel Juan Pineda, Elisa Domínguez, Naila Angelina, Roberto Romero'
 
 
 services:
