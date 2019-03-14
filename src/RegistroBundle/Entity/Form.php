@@ -277,7 +277,7 @@ class Form
      * @ORM\Column(name="razones", type="text")
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      max = 1000,
+     *      max = 2000,
      *      maxMessage = "No se permiten más de {{ limit }} caracteres"
      * )
      */
