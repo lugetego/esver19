@@ -300,7 +300,7 @@ class Form
      *
      * @ORM\Column(name="recomendacion", type="text", nullable=true)
      * @Assert\Length(
-     *      max = 4000,
+     *      max = 6000,
      *      maxMessage = "No se permiten más de {{ limit }} caracteres"
      * )
      */
