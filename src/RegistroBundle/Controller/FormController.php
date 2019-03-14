@@ -175,7 +175,7 @@ class FormController extends Controller
                 $mailer = $this->get('mailer');
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Carta de recomendación - ' .$this->getParameter('eventoc')
+                    ->setSubject('Carta de recomendación - ' .$this->getParameter('eventoc'))
                     ->setFrom('webmaster@matmor.unam.mx')
                     ->setTo(array($registro->getMailprofesor()))
                     ->setCc(array($registro->getMail()))
