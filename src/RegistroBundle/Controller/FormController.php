@@ -53,7 +53,6 @@ class FormController extends Controller
         $form->remove('cartaFile');
         $form->remove('comentarios');
         $form->remove('recomendacion');
-        $form->remove('examen');
         $form->remove('confirmado');
 
 

@@ -168,7 +168,7 @@
                     <div class="page-headerm col-lg-12">
                         <h1><small><i class="fa fa-calculator"></i> {{ evento }}</small></h1>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <dl>
                             <dt>Beca</dt>
                             <dd>{{ form.beca }}</dd>
@@ -184,7 +184,17 @@
                             {% endif %}
                         </dl>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
+                        <dl>
+                            <dt>Examen PCCM</dt>
+                            {% if form.examen == true %}
+                                <dd><span class="label label-success">Si</span></dd>
+                            {% else %}
+                                <dd><span class="label label-danger">No</span></dd>
+                            {% endif %}
+                        </dl>
+                    </div>
+                    <div class="col-lg-12">
                         <dl>
                             <dt>Cursos</dt>
                             <dd>{{ form.cursos }}</dd>
@@ -196,6 +206,7 @@
                             <dd>{{ form.razones }}</dd>
                         </dl>
                     </div>
+
 
 
                     <div class="page-header col-lg-12">

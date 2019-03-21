@@ -18,9 +18,21 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <span class="badge">{{ registros|length }}</span>
-                         Registros <br><br>
+                         Registros <br>
+                        {% set examen = 0 %}
+                        {% for registro in registros %}
+                            {% if registro.examen == true %}
+                                {% set examen = examen + 1 %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <span class="badge">{{ examen }}</span>
+                        Examen admisión al PCCM
                     </li>
+
+
                 </ul>
+
             </div>
             <div class="col-md-2">
                 <ul class="list-group">
@@ -124,6 +136,7 @@
                     <th>Universidad</th>
                     <th>Cursos</th>
                     <th>Vegetariano</th>
+                    <th>Examen PCCM</th>
                     <th>Aceptado</th>
                     <th>Confirmado</th>
 
@@ -145,7 +158,13 @@
                                 No
                             {% endif %}</td>
 
+                        <td class="text-center">{% if registro.examen == true %}
+                                <span class="label label-success "><i class="fa fa-check-square"></i> Si</span>
 
+                            {% elseif registro.examen == false %}
+                                <span class="label label-danger"><i class="fa fa-times-circle"></i> No</span>
+                            {% endif %}
+                        </td>
 
 
                         <td class="text-center">{% if registro.aceptado == true %}

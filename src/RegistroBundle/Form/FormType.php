@@ -245,6 +245,7 @@ class FormType extends AbstractType
                 'multiple' => false,
                 'required'  => true,
                 'choices_as_values' => false,
+                'label'=>'¿Desea realizar el examen de admisión?'
 
             ))
             ->add('confirmado', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
