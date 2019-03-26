@@ -223,7 +223,7 @@ class FormType extends AbstractType
 
             ))
             ->add('razones', 'Symfony\Component\Form\Extension\Core\Type\TextareaType',array(
-                'label'=>'*Razones por las que desea entrar a la escuela',
+                'label'=>'*Razones por las que deseas entrar a la escuela',
                 'required'=>true,
 
             ))
@@ -245,7 +245,7 @@ class FormType extends AbstractType
                 'multiple' => false,
                 'required'  => true,
                 'choices_as_values' => false,
-                'label'=>'¿Desea realizar el examen de admisión?'
+                'label'=>'¿Deseas realizar el examen de admisión?'
 
             ))
             ->add('confirmado', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
