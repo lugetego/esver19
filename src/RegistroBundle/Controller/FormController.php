@@ -371,4 +371,63 @@ class FormController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Download file
+     *
+     * @Route("/descarga/constancia", name="form_constancia")
+     * @Method({"GET", "POST"})
+     */
+    public function constanciaAction(Request $request)
+    {
+
+        $defaultData = array('message' => 'Type your message here');
+        $formail = $this->createFormBuilder($defaultData)
+            ->add('email', 'Symfony\Component\Form\Extension\Core\Type\EmailType',array('label'=>'Ingresa el correo con el que te registraste para descargar tu constancia'))
+            ->getForm();
+
+        $formail->handleRequest($request);
+
+        if ($formail->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $mail = $formail->getData('mail');
+            $em = $this->getDoctrine()->getManager();
+            $registro = $em->getRepository('RegistroBundle:Form')->findOneByMail($mail);
+
+            if (!$registro) {
+                throw $this->createNotFoundException(
+                    'Registro no encontrado'
+                );
+            }
+
+            $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$mail['email'].".pdf";
+
+            $headers=get_headers($pdf, 1);
+            if ($headers[0]!='HTTP/1.1 200 OK') {
+
+                throw $this->createNotFoundException(
+                    'Archivo no encontrado'
+                );
+            }
+            else {
+                return $this->redirect($pdf);
+
+            }
+
+//            return $this->render('form/constancia.html.twig', array(
+//                'registro' => $registro,
+//            ));
+
+        }
+
+        return $this->render('form/constancia.html.twig', array(
+            'form' => $formail->createView(),
+
+        ));
+
+
+
+
+
+    }
 }

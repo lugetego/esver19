@@ -41,6 +41,7 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/form/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/form/descarga/constancia, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/registro/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/form/.+/.+/recom, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/form/.+/.+/confirma, roles: IS_AUTHENTICATED_ANONYMOUSLY }

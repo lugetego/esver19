@@ -12,3 +12,7 @@ body
     font-family: 'montserrat';
     font-size: 15px;
 }
+
+.modal{
+    position: relative;
+}
