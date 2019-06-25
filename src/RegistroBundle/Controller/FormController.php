@@ -400,7 +400,7 @@ class FormController extends Controller
                 );
             }
 
-            $email=strtolower($mail['email']);
+            $email= strtolower($mail['email']);
 
             $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$email.".pdf";
 //            $pdf= "http://localhost/esver19/files/".$email.".pdf";
