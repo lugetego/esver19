@@ -400,16 +400,31 @@ class FormController extends Controller
                 );
             }
 
-            $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$mail['email'].".pdf";
+            $email=strtolower($mail['email']);
+
+            $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$email.".pdf";
+//            $pdf= "http://localhost/esver19/files/".$email.".pdf";
+
 
             $headers=get_headers($pdf, 1);
             if ($headers[0]!='HTTP/1.1 200 OK') {
-
                 throw $this->createNotFoundException(
                     'Archivo no encontrado'
                 );
             }
             else {
+
+                $mailer = $this->get('mailer');
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Descarga de constancia - '. $this->getParameter('eventoc'))
+                    ->setFrom('webmaster@matmor.unam.mx')
+//                    ->setTo(array($registro->getMail()))
+                    ->setBcc(array('gerardo@matmor.unam.mx'))
+                    ->setBody($this->renderView('form/descargaConstancia.txt.twig', array('entity' => $registro,'pdf'=>$pdf)));
+                $mailer->send($message);
+
+
                 return $this->redirect($pdf);
 
             }
