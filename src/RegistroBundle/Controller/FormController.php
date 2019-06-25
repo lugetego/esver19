@@ -401,10 +401,7 @@ class FormController extends Controller
             }
 
             $email= strtolower($mail['email']);
-
             $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$email.".pdf";
-//            $pdf= "http://localhost/esver19/files/".$email.".pdf";
-
 
             $headers=get_headers($pdf, 1);
             if ($headers[0]!='HTTP/1.1 200 OK') {
@@ -424,14 +421,10 @@ class FormController extends Controller
                     ->setBody($this->renderView('form/descargaConstancia.txt.twig', array('entity' => $registro,'pdf'=>$pdf)));
                 $mailer->send($message);
 
-
                 return $this->redirect($pdf);
 
             }
 
-//            return $this->render('form/constancia.html.twig', array(
-//                'registro' => $registro,
-//            ));
 
         }
 
@@ -439,10 +432,5 @@ class FormController extends Controller
             'form' => $formail->createView(),
 
         ));
-
-
-
-
-
     }
 }
